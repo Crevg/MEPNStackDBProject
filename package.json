@@ -1,0 +1,30 @@
+{
+  "name": "mongocrud",
+  "version": "1.0.0",
+  "description": "REST Api for CRUD operations in mongo db",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"no test made\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CrissTec/mongoDB.git"
+  },
+  "keywords": [
+    "mongo",
+    "crud",
+    "api",
+    "node"
+  ],
+  "author": "Cristofer Villegas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CrissTec/mongoDB/issues"
+  },
+  "homepage": "https://github.com/CrissTec/mongoDB#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mongoose": "^5.3.1"
+  }
+}
