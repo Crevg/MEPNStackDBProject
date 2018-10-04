@@ -16,7 +16,6 @@ exports.create = function(req, res){
         duracion: req.body.duracion,
         actores: req.body.actores
     });
-    console.log(pelicula);
     pelicula.save(function(err){
         if (err){
             res.send(err)

@@ -16,6 +16,9 @@ app.use(bodyParser.urlencoded({extended: false}));
 const pelicula = require('./routes/pelicula.route'); 
 app.use('/peliculas', pelicula);
 
+const productora = require('./routes/productora.route');
+app.use('/productoras', productora);
+
 //port 
 let port = 3000
 app.listen(port, () => console.log('Server is running on port ' + port))
