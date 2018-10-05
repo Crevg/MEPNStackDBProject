@@ -10,6 +10,7 @@ let PeliculaSchema = new Schema({
     anno: {type: Number, required: true},
     duracion: {type: Number , required: true},
     actores: {type: [String], required: true},
+    productora: {type: String, required: true}
 });
 
 //Exportar el model

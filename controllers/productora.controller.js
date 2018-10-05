@@ -43,7 +43,7 @@ exports.update = function(req, res){
     });
 }
 
-exports.del = function(req, res){
+exports.delete = function(req, res){
     Productora.findByIdAndRemove(req.params.id, function(err){
         if (err){
             res.send(err);
@@ -51,3 +51,4 @@ exports.del = function(req, res){
         res.send("OK");
     });
 }
+
