@@ -7,9 +7,9 @@ const peliculaController = require('../controllers/pelicula.controller');
 
 router.get('/test', peliculaController.test);
 router.post('/create', peliculaController.create);
-router.get('/readAll', peliculaController.readAll);/*
-router.get('/read:id', peliculaController.readById);
-router.put('/update:id', peliculaController.update);
-router.delete('del:id', peliculaController.delete);*/
+router.get('/readAll', peliculaController.readAll);
+router.get('/:id/read/', peliculaController.readById);
+router.put('/:id/update', peliculaController.update);
+router.delete('/:id/del', peliculaController.delete);
 
 module.exports = router;

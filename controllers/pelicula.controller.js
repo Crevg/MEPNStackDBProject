@@ -20,9 +20,10 @@ exports.create = function(req, res){
         if (err){
             res.send(err)
         }
-        res.send('Se insertó el producto');
+        res.send('OK');
     })
 };
+
 
 
 exports.readAll = function(req, res){
@@ -33,3 +34,30 @@ exports.readAll = function(req, res){
         res.send(pelis);
     });
 };
+
+exports.readById = function(req, res){
+    Pelicula.findById(req.params.id, function(err, pelicula){
+        if (err){
+            res.send(err);
+        }
+        res.send(pelicula);
+    });
+};
+
+exports.update = function(req, res){
+    Pelicula.findByIdAndUpdate(req.params.id, {$set: req.body}, function(err, pelicula){
+        if (err){
+            res.send(err);
+        }
+        res.send("OK");
+    });
+}
+
+exports.del = function(req, res){
+    Pelicula.findByIdAndRemove(req.params.id, function(err){
+        if (err){
+            res.send(err);
+        }
+        res.send("OK");
+    });
+}
