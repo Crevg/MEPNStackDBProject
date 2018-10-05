@@ -24,7 +24,11 @@
   "homepage": "https://github.com/CrissTec/mongoDB#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "bootstrap": "^4.1.3",
+    "cors": "^2.8.4",
     "express": "^4.16.3",
-    "mongoose": "^5.3.1"
+    "jquery": "^3.3.1",
+    "mongoose": "^5.3.1",
+    "popper.js": "^1.14.4"
   }
 }

@@ -1,6 +1,9 @@
 // dependencies
 const express = require('express');
 const bodyParser = require ('body-parser');
+const cors = require('cors')
+
+
 
 // init app
 
@@ -10,7 +13,7 @@ const app = express();
 //bodyparser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
-
+app.use(cors({credentials:true, origin: true}))
 
 //rutas
 const pelicula = require('./routes/pelicula.route'); 
