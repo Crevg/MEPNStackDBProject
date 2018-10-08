@@ -9,12 +9,25 @@ foregroundColor = colors.foregroundColor
 
 #requests
 
-def cargarProductoras():
-    res = requests.get("http://localhost:3000/productoras/readAll")
+def cargarPeliculas():
+    res = colors.leerPelicula()
     if res.status_code == requests.codes.ok:
         return res.json()
     else:
         return [[]]
+
+
+def cargarProductoras():
+    try:
+        res = colors.leerProductoras()
+
+        if res.status_code == requests.codes.ok:
+            return res.json()
+        else:
+            return [[]]
+    except requests.exceptions.ConnectionError:
+        return [[]]
+
 
 
 def actualizarPeliWindow(root):
@@ -63,7 +76,16 @@ def actualizarPeliWindow(root):
         messagebox.showerror("Error", "No se pudo establecer comunicación con el servir, por favor intentelo más tarde.")
         return cancelar()
 
+    peliculas = cargarPeliculas()
+    if peliculas == []:
+        messagebox.showerror("Error", "No existen películas, por favor agregue una antes de continuar.")
+        return cancelar()
+    elif peliculas[0] == []:
+        messagebox.showerror("Error", "No se pudo establecer comunicación con el servidor, por favor intentelo más tarde.")
+        return cancelar()
+    
     listaProductoras = colors.getListaNombres(productoras)
+    listaNombres = colors.getListaNombres(peliculas)
     comboboxActualizarNombre = ttk.Combobox(frameActualizarNombre, width = 40, font= ("Arial Bold", 15),  state= "readonly")
     comboboxActualizarNombre["values"] = listaNombres
     entryActualizarGenero = Entry(frameActualizarGenero, width = 40, font= ("Arial Bold", 15))

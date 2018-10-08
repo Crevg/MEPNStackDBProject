@@ -41,8 +41,6 @@ def agregarProduWindow(root):
 
     def agregar():
         year = datetime.date.today().year
-
-        print (year)
         anno = entryAgregarAnnoProdu.get()
         nombre = entryAgregarNombreProdu.get()
         direccion = entryAgregarDireccionProdu.get()

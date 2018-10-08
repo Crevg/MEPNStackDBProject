@@ -18,6 +18,8 @@ def getIdByName(json, name):
         if json[i]["nombre"] == name:
             return json[i]["_id"]
     
+def agregarPelicula(body):
+    return requests.post("http://localhost:3000/peliculas/create", json = body)
 
 def leerPelicula():
     return requests.get("http://localhost:3000/peliculas/readAll")
