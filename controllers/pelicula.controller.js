@@ -43,6 +43,7 @@ exports.readById = function(req, res){
 };
 
 exports.update = function(req, res){
+    console.log("I'm here")
     Pelicula.findByIdAndUpdate(req.params.id, {$set: req.body}, function(err, pelicula){
         if (err){
             res.send(err);

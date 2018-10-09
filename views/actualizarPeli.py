@@ -2,6 +2,7 @@ from tkinter import ttk
 from tkinter import *
 import colors
 import requests
+import datetime
 
 #colores
 backgroundColor = colors.backgroundColor
@@ -64,11 +65,6 @@ def actualizarPeliWindow(root):
         frameActualizarPeli.pack_forget()
         return    
 
-    def actualizar():
-        #FALTA LÓGICA DE Actualizar
-        frameActualizarPeli.pack_forget()
-        return  
-
 
     #entrys
 
@@ -105,6 +101,46 @@ def actualizarPeliWindow(root):
     comboboxActualizarProductoras["values"] = listaProductoras
     comboboxActualizarProductoras.current(0)
 
+    def actualizar():
+        idPeli = colors.getIdByName(peliculas, comboboxActualizarNombre.get())
+        year = datetime.date.today().year
+        nombre = comboboxActualizarNombre.get()
+        genero = entryActualizarGenero.get()
+        director = entryActualizarDirector.get()
+        franquicia = entryActualizarFranquicia.get()
+        pais = entryActualizarPais.get()
+        anno = entryActualizarAnno.get()
+        duracion = entryActualizarDuracion.get()
+        actores = entryActualizarActores.get()
+        productora = comboboxActualizarProductoras.get()
+        id_productora = colors.getIdByName(productoras, productora)
+
+        if not nombre or not genero or not director or not pais or not anno or not duracion or not actores or not productora:
+            messagebox.showerror("Error", "Todos los campos menos franquicia son obligatorios")
+        else:
+            valido = False
+            try:
+                anno = int (anno)
+                duracion = int (duracion)
+                valido = True
+            except ValueError:
+                messagebox.showerror("Error", "El año y la duración deben ser números")
+                valido = False
+            if valido:
+                if anno > year or anno < 1900 or duracion < 0:
+                    messagebox.showerror("Error", "Por favor inserte un año y una duración válidas")
+                else:
+                    actores = actores.split(",")
+                    body = {"nombre": nombre, "genero": genero, "nombreDirector": director, "franquicia": franquicia, "pais": pais, "anno": anno, "duracion": duracion, "actores": actores, "productora": id_productora}
+                    try:
+                        res = colors.actualizarPelicula(body, idPeli)
+                        messagebox.showinfo("Listo!", "Se actualizó la película nueva con éxito.")
+                        frameActualizarPeli.pack_forget()
+                    except requests.exceptions.ConnectionError:
+                        messagebox.showerror("Error", "No se pudo establecer comunicación con el servidor, por favor intentelo más tarde.")
+                    return   
+
+
 
     def cargarInfo(event):
         indice = 0
@@ -123,7 +159,7 @@ def actualizarPeliWindow(root):
         for i in range (0, cantActores):
             actores = actores + peliculas[indice]["actores"][i]
             if i + 1 < cantActores:
-                actores = actores + ", "
+                actores = actores + ","
             
 
         entryActualizarGenero.delete(0, END)

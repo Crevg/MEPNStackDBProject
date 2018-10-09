@@ -118,7 +118,3 @@ nextWindow("selección")
 #ciclo del programa
 root.mainloop()
 
-
-#r = requests.get('http://localhost:3000/peliculas/readAll')
-#print (r.text)
-

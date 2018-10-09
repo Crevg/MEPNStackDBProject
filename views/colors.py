@@ -24,6 +24,9 @@ def agregarPelicula(body):
 def leerPelicula():
     return requests.get("http://localhost:3000/peliculas/readAll")
 
+def actualizarPelicula(body, id):
+    return requests.put("http://localhost:3000/peliculas/"+id+"/update", json = body)
+
 def borrarPelicula(id):
     return requests.delete("http://localhost:3000/peliculas/"+id+"/del")
 
@@ -32,6 +35,9 @@ def agregarProductora(body):
 
 def leerProductoras():
     return requests.get("http://localhost:3000/productoras/readAll")
+
+def actualizarProductora(body, id):
+    return requests.put("http://localhost:3000/productoras/"+id+"/update", json = body)
 
 def borrarProductora(id):
     return requests.delete("http://localhost:3000/productoras/"+id+"/del")
