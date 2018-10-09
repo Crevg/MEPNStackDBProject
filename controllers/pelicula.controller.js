@@ -62,7 +62,7 @@ exports.delete = function(req, res){
 }
 
 exports.porTitulo = function(req, res){
-    var query = {nombre: req.params.nombre}
+    var query = {nombre: req.params.titulo}
     Pelicula.findOne(query, function(err, pelicula){
         if (err){
             res.send(err)
@@ -82,7 +82,7 @@ exports.porFranquicia = function(req, res){
 }
 
 exports.porAnno = function(req, res){
-    var query = {anno: {$gt: req.params.fechaInicial, $lt: req.params.fechaFinal}}
+    var query = {anno: {$gte: req.params.fechaInicial, $lte: req.params.fechaFinal}}
     Pelicula.find(query, function(err, peliculas){
         if (err){
             res.send(err)
