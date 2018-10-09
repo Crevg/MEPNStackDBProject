@@ -9,7 +9,9 @@ from agregarProductora import agregarProduWindow
 from leerProductora import leerProduWindow
 from actualizarProductora import actualizarProduWindow
 from eliminarProductora import eliminarProduWindow
-
+from porTitulo import tituloPeliWindow
+from porFranquicia import franquiciaPeliWindow
+from porAnno import annoPeliWindow
 
 #main window
 #colores
@@ -51,10 +53,13 @@ def nextWindow(action):
         eliminarProduWindow(root)
     elif action == "portitulo":
         homeFrame.pack_forget()
+        tituloPeliWindow(root)
     elif action == "porfranquicia":
         homeFrame.pack_forget()
+        franquiciaPeliWindow(root)
     elif action == "poraño":
         homeFrame.pack_forget()
+        annoPeliWindow(root)
     elif action == "porprodu":
         homeFrame.pack_forget()
     homeFrame.pack(fill = BOTH)

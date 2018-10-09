@@ -41,3 +41,16 @@ def actualizarProductora(body, id):
 
 def borrarProductora(id):
     return requests.delete("http://localhost:3000/productoras/"+id+"/del")
+
+def buscarPorTitulo(titulo):
+    res = requests.get("http://localhost:3000/peliculas/"+titulo+"/porTitulo")
+    return res
+
+def buscarPorFranquicia(franquicia):
+    res = requests.get("http://localhost:3000/peliculas/"+franquicia+"/porFranquicia")
+    return res
+
+def buscarPorAnno(inicial, final):
+    res = requests.get("http://localhost:3000/peliculas/"+str (inicial)+"/" + str(final)+"/porAnno")
+    print (res.status_code)
+    return res
