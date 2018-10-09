@@ -40,7 +40,6 @@ def eliminarPeliWindow(root):
 
     listaNombres = colors.getListaNombres(peliculas)
 
-    print (listaNombres)
     comboboxEliminarNombre = ttk.Combobox(frameEliminarNombre, width = 40, font= ("Arial Bold", 15), state= "readonly")
     comboboxEliminarNombre["values"] = listaNombres 
     comboboxEliminarNombre.current(0)
