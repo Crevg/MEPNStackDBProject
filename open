@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+sudo service mongod start 
+gnome-terminal -- sudo mongo --host localhost:27017
+gnome-terminal -- node api.js
+python3 views/home.py

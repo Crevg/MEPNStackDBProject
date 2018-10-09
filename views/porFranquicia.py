@@ -68,7 +68,6 @@ def franquiciaPeliWindow(root):
 
     def cargarInfo(event):
         nombre = comboBoxFranquiciaNombre.get()
-        print (nombre)
         indice = 0
         for i in range (0, len(listaPelis)):
             if listaPelis[i] == nombre:
@@ -183,7 +182,6 @@ def franquiciaPeliWindow(root):
     #funciones
 
     def cancelar():
-        print (listaPelis)
         frameFranquiciaPeli.pack_forget()
         return    
     #botones
