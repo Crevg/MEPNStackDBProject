@@ -53,3 +53,11 @@ def buscarPorFranquicia(franquicia):
 def buscarPorAnno(inicial, final):
     res = requests.get("http://localhost:3000/peliculas/"+str (inicial)+"/" + str(final)+"/porAnno")
     return res
+
+def buscarPorProductoraDatos(idProd):    
+    res = requests.get("http://localhost:3000/peliculas/"+idProd+"/porProductora/datos")
+    return res
+
+def buscarPorProductoraDuracion(idProd):
+    res = requests.get("http://localhost:3000/peliculas/"+idProd+"/porProductora/duraciones")
+    return res

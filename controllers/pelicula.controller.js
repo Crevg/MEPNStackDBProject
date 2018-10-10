@@ -118,6 +118,7 @@ exports.porProductoraDuraciones = function(req, res){
 
         },
     ];
+    res.send({})
 
     Pelicula.aggregate(aggregate, function(err, result){
         if (err){

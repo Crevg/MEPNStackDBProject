@@ -12,6 +12,7 @@ from eliminarProductora import eliminarProduWindow
 from porTitulo import tituloPeliWindow
 from porFranquicia import franquiciaPeliWindow
 from porAnno import annoPeliWindow
+from porProductora import productoraPeliWindow
 
 #main window
 #colores
@@ -62,6 +63,7 @@ def nextWindow(action):
         annoPeliWindow(root)
     elif action == "porprodu":
         homeFrame.pack_forget()
+        productoraPeliWindow(root)
     homeFrame.pack(fill = BOTH)
 
 
