@@ -144,6 +144,8 @@ def productoraPeliWindow(root):
                 if len(res.json()) == 0:
                     messagebox.showinfo("Disculpe", "No se encontró una película de esa Productora.")             
                 else:
+                    valores = res.json()[0]["value"]
+                    print (res.json()[0])
                     entryProductoraCantidad.config(state = "normal")
                     entryProductoraDuracionMaxima.config(state = "normal")
                     entryProductoraDuracionMinima.config(state = "normal")
@@ -154,10 +156,10 @@ def productoraPeliWindow(root):
                     entryProductoraDuracionMinima.delete(0, END)
                     entryProductoraDuracionPromedio.delete(0, END)
 
-                    entryProductoraCantidad.insert(0, res.json()["cantidad"])
-                    entryProductoraDuracionMaxima.insert(0, res.json()["duracionMaxima"])
-                    entryProductoraDuracionMinima.insert(0, res.json()["duracionMinima"])
-                    entryProductoraDuracionPromedio.insert(0, res.json()["duracionPromedio"])
+                    entryProductoraCantidad.insert(0, valores["cantidad"])
+                    entryProductoraDuracionMaxima.insert(0, valores["duracionMaxima"])
+                    entryProductoraDuracionMinima.insert(0, valores["duracionMinima"])
+                    entryProductoraDuracionPromedio.insert(0, valores["duracionPromedio"])
 
                     entryProductoraCantidad.config(state = "readonly")
                     entryProductoraDuracionMaxima.config(state = "readonly")
@@ -193,7 +195,6 @@ def productoraPeliWindow(root):
     labelProductoraNombre.pack()
     labelProductoraGenero.pack()
     labelProductoraAnno.pack()
-    #labelProductoraProductoras.pack()
     labelProductoraCantidad.pack()
     labelProductoraDuracionMaxima.pack()
     labelProductoraDuracionMinima.pack()

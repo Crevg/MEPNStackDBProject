@@ -101,29 +101,30 @@ exports.porProductoraDatos = function(req, res){
     });
 }
 
-exports.porProductoraDuraciones = function(req, res){
-    var aggregate = [{
-        $group: 
-            {
-                _id: "$productora",
+exports.porProductoraDuraciones = function(req, res){   
+    var aggregate = [
+        {$match: {productora: req.params.productora}},
+        {$group: 
+            {   
+                _id: null,
                 duracionPromedio: { $avg: "$duracion"},
                 duracionMaxima: {$max: "$duracion"},
                 duracionMinima: {$min: "$duracion"},
-            }}, 
+                cantidad: {$sum: 1}
+            }
+        }, 
         {$project:
             {
-                _id: req.params.productora,
                 value: {"cantidad": "$cantidad", "duracionPromedio": "$duracionPromedio","duracionMinima":"$duracionMinima", "duracionMaxima":"$duracionMaxima"}
             }
 
         },
     ];
-    res.send({})
-
     Pelicula.aggregate(aggregate, function(err, result){
         if (err){
             res.send(err)
         }
+        res.send(result)
     });
     
 }
